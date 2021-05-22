@@ -27,6 +27,7 @@ export default {
         "https://blog-demo-f3f0e-default-rtdb.asia-southeast1.firebasedatabase.app/posts.json"
       )
       .then((data) => {
+        console.log(data)
         return data.json();
       })
       .then(function(data) {
@@ -40,9 +41,6 @@ export default {
           data[key].id = key;
           blogsArray.push(data[key]);
         }
-        console.log(blogsArray);
-        console.log(1111)
-        console.log(this)
         this.blogs = blogsArray;
       });
   },

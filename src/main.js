@@ -22,7 +22,7 @@ const router = new VueRouter({
 //   },
 // });
 Vue.directive("theme", {
-  bind(el, binding, _vnode) {
+  bind(el, binding) {
     if (binding.value == "wide") {
       el.style.maxWidth = "1260px";
     } else if (binding.value == "narrow") {

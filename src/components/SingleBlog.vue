@@ -9,6 +9,8 @@
         {{ category }}
       </li>
     </ul>
+    <button v-on:click.prevent="deleteArticle()">删除</button>
+    <router-link :to="{path:'/edit/'+id}">编辑</router-link>
   </div>
 </template>
 
@@ -20,6 +22,19 @@ export default {
       id: this.$route.params.id,
       blog: {},
     };
+  },
+  methods: {
+    deleteArticle() {
+      this.$http
+        .delete(
+          "https://blog-demo-f3f0e-default-rtdb.asia-southeast1.firebasedatabase.app/posts/" +
+            this.id +
+            ".json"
+        )
+        .then(() => {
+          this.$router.push({ path: "/" });
+        });
+    },
   },
   created() {
     this.$http
@@ -33,7 +48,6 @@ export default {
       })
       .then(function(data) {
         this.blog = data;
-        console.log(data);
       });
   },
 };
