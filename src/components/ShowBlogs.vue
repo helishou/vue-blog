@@ -1,5 +1,6 @@
 <template>
   <div id="show-blogs" v-theme:column="'wide'">
+    <!-- <counter></counter> -->
     <h1>博客总览</h1>
     <input type="text" v-model="search" placeholder="搜索" />
     <div v-for="blog in filteredBlogs" :key="blog.id" class="single-blog">
@@ -27,7 +28,7 @@ export default {
         "https://blog-demo-f3f0e-default-rtdb.asia-southeast1.firebasedatabase.app/posts.json"
       )
       .then((data) => {
-        console.log(data)
+        console.log(data);
         return data.json();
       })
       .then(function(data) {
@@ -57,6 +58,20 @@ export default {
       return value.toUpperCase();
     },
   },
+
+  //局部自定义组件
+  // components: {
+  //   'counter': {
+  //     //1.组件名为"conter"; 2.data 写函数; 3.template 写组件的内容（元素和触发的事件）
+  //     data: function() {
+  //       return { count: 0 };
+  //     },
+
+  //     //template 是模板的意思，在 html 里面是一个可以同时控制多个子元素的父元素。在这里定义了组件的内容
+  //     template:
+  //       '<button v-on:click="count++">点击计算点击次数：{{count}}次</button>',
+  //   },
+  // },
   directives: {
     rainbow: {
       bind(el, _binding, _vnode) {
