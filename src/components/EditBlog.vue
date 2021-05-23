@@ -25,7 +25,7 @@
         <option disabled value="">请选择</option>
         <option v-for="author in authors" :key="author">{{ author }}</option>
       </select>
-      <button v-on:click.prevent="post()">添加博客</button>
+      <button v-on:click.prevent="put()">添加博客</button>
     </form>
     <div id="preview">
       <h3>博客总览</h3>
@@ -62,15 +62,16 @@ export default {
     };
   },
   methods: {
-    post() {
+    put() {
       this.$http
         //可以请求static的本地json
-        .post(
-          "https://blog-demo-f3f0e-default-rtdb.asia-southeast1.firebasedatabase.app/posts.json",
-          this.blog
+        .put(
+          "https://blog-demo-f3f0e-default-rtdb.asia-southeast1.firebasedatabase.app/posts/" +
+          this.id +
+          ".json",this.blog
         )
         .then((data) => {
-          console.log(data);
+          // console.log(data);
           this.submmited = true;
         });
     },

@@ -65,8 +65,8 @@ export default {
       this.$http
       //可以请求static的本地json
         .post("https://blog-demo-f3f0e-default-rtdb.asia-southeast1.firebasedatabase.app/posts.json", this.blog)
-        .then((data) => {
-          console.log(data);
+        .then(() => {
+          // console.log(data);
           this.submmited = true;
         });
     },
